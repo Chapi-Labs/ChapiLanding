@@ -1,0 +1,50 @@
+{
+  "name": "chapi-labs-landing",
+  "description": "Main Landing Page",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Chapi Labs",
+  "license": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "husky": "^1.1.4",
+    "lerna": "^3.4.3",
+    "lint-staged": "^8.0.4",
+    "prettier": "^1.15.2",
+    "rimraf": "^2.6.3"
+  },
+  "workspaces": [
+    "packages/common",
+    "packages/landing",
+    "packages/landing-gatsby",
+    "packages/reusecore"
+  ],
+  "scripts": {
+    "clean": "lerna clean",
+    "del-dist": "lerna exec --parallel --rimraf public",
+    "start": "lerna run --parallel dev",
+    "web": "cd packages/landing && yarn dev",
+    "static-build": "cd ./packages/landing && next build && next export -o next",
+    "now-build": "cd ./packages/landing && next build",
+    "landing-start": "cd ./packages/landing && yarn start",
+    "core": "cd ./packages/common && yarn dev",
+    "core-build": "cd ./packages/common && yarn build",
+    "prebuild": "yarn del-dist",
+    "deploy": "now && now alias",
+    "format": "prettier --trailing-comma es5 --single-quote --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md,css}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  }
+}

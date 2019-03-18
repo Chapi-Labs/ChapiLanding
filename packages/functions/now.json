@@ -1,0 +1,7 @@
+{
+    "version": 2,
+    "name": "landing-chapi-labs",
+    "builds": [
+        { "src": "index.js", "use": "@now/node" }
+    ]
+}
