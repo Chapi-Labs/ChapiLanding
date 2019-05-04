@@ -33,7 +33,7 @@
     "core": "cd ./packages/common && yarn dev",
     "core-build": "cd ./packages/common && yarn build",
     "prebuild": "yarn del-dist",
-    "deploy": "now && now alias",
+    "deploy": "now --target production && now alias",
     "format": "prettier --trailing-comma es5 --single-quote --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js'"
   },
   "husky": {

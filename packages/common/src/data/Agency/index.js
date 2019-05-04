@@ -116,23 +116,23 @@ const data = {
   blog: [
     {
       id: 1,
-      title: 'Real home corporation',
+      title: 'Chapi Time Project',
       thumbnail_url: BlogImage1,
-      date: 'November 02, 2018',
+      date: 'March 02, 2018',
       postLink: '#1'
     },
     {
       id: 2,
-      title: 'Sheltech developer ltd.',
+      title: 'Public Hospital Quetzaltenango',
       thumbnail_url: BlogImage2,
-      date: 'November 12, 2018',
+      date: 'November 12, 2017',
       postLink: '#2'
     },
     {
       id: 3,
-      title: 'Alt architecture co.',
+      title: 'Check My Keywords',
       thumbnail_url: BlogImage3,
-      date: 'December 09, 2018',
+      date: 'May 10, 2018',
       postLink: '#3'
     }
   ],
@@ -158,52 +158,16 @@ const data = {
         'flaticon-twitter-logo-silhouette',
         'flaticon-instagram',
       ]
-    },
-    {
-      id: 3,
-      name: 'Handdy Albuzz',
-      thumbnail_url: Member3,
-      designation: 'Article Writter',
-      social_links: [
-        'flaticon-dribble-logo',
-        'flaticon-twitter-logo-silhouette',
-        'flaticon-instagram',
-        'flaticon-facebook-logo'
-      ]
     }
   ],
   testimonial: [
     {
       id: 1,
-      name: 'Denny Albuz',
-      designation: 'CEO of Denish Co.',
+      name: 'Oscar Díaz',
+      designation: 'Partner of Diaz Reyes Moore Stephens',
       comment:
-        'Best working experience  with this amazing team & in future, we want to work together',
+        'Chapi Time software changed our company culture of accountability. In future, we want to work together',
       avatar_url: Denny
-    },
-    {
-      id: 2,
-      name: 'Roman Ul Oman',
-      designation: 'Co-founder of QatarDiaries',
-      comment:
-        'Impressed with master class support of the team and really look forward for the future.',
-      avatar_url: Menny
-    },
-    {
-      id: 3,
-      name: 'Caroleane Mina',
-      designation: 'Director of Beauty-queen',
-      comment:
-        'I have bought more than 10 themes on ThemeForest, and this is the first one I review. Wow! Amazing React Theme',
-      avatar_url: Denny
-    },
-    {
-      id: 4,
-      name: 'Roman Ul Oman',
-      designation: 'Co-founder of QatarDiaries',
-      comment:
-        'Impressed with master class support of the team and really look forward for the future.',
-      avatar_url: Menny
     }
   ],
   faq: [
