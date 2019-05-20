@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Box from 'reusecore/src/elements/Box';
 import Text from 'reusecore/src/elements/Text';
@@ -9,52 +9,104 @@ import Container from '../../../components/UI/Container';
 
 import ContactFromWrapper from './contact.style';
 
-const ContactSection = ({
-  sectionWrapper,
-  row,
-  contactForm,
-  secTitleWrapper,
-  secHeading,
-  secText,
-  button,
-  note,
-}) => {
-  return (
-    <Box {...sectionWrapper} id="contactSection">
-      <Container>
-        <Box {...secTitleWrapper}>
-          <Text {...secText} content="CONTACT US" />
-          <Heading
-            {...secHeading}
-            content="Are you Interested to meet with us?"
-          />
-        </Box>
-        <Box {...row}>
-          <Box {...contactForm}>
-            <ContactFromWrapper>
-              <Input
-                inputType="email"
-                placeholder="Email address"
-                iconPosition="right"
-                isMaterial={false}
-                className="email_input"
-              />
-              <Input
-                inputType="textarea"
-                placeholder="Message"
-                iconPosition="right"
-                isMaterial={false}
-                className="email_input"
-              />
-              <Button {...button} title="SEND MESSAGE" />
-            </ContactFromWrapper>
-            <Text {...note} content="" />
+class ContactSection extends Component {
+  state = {
+    email: ' ',
+    content: ' ',
+  };
+  constructor(props) {
+    super(props);
+  }
+  saveToState = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  handleSubmit = async () => {
+    const response = await fetch(
+      'https://chapi-landing-cms.herokuapp.com/contacts',
+      {
+        method: 'post',
+        headers: {
+          'Content-type': 'application/json',
+          Accept: 'application/json',
+          'Accept-Charset': 'utf-8',
+        },
+        body: JSON.stringify(this.state),
+      }
+    );
+
+    const messageData = await response.json();
+    if (response.status === 200) {
+      this.setState({ email: '', content: '' });
+      alert(`Sent successfully`);
+    }
+    // the API frequently returns 201
+    if (response.status !== 200 && response.status !== 201) {
+      alert(`Invalid response status ${response.status}.`);
+      throw messageData;
+    }
+  };
+  render() {
+    const {
+      sectionWrapper,
+      row,
+      contactForm,
+      secTitleWrapper,
+      secHeading,
+      secText,
+      button,
+      note,
+    } = this.props;
+    return (
+      <Box {...sectionWrapper} id="contactSection">
+        <Container>
+          <Box {...secTitleWrapper}>
+            <Text {...secText} content="CONTACT US" />
+            <Heading
+              {...secHeading}
+              content="Are you Interested to meet with us?"
+            />
           </Box>
-        </Box>
-      </Container>
-    </Box>
-  );
-};
+          <Box {...row}>
+            <Box {...contactForm}>
+              <ContactFromWrapper>
+                <Input
+                  inputType="email"
+                  placeholder="Email address"
+                  iconPosition="right"
+                  isMaterial={false}
+                  label="Email"
+                  value={this.state.email}
+                  onChange={this.saveToState}
+                  className="email_input"
+                />
+                <Input
+                  inputType="textarea"
+                  placeholder="Message"
+                  label="Message"
+                  name="content"
+                  iconPosition="right"
+                  isMaterial={false}
+                  value={this.state.content}
+                  onChange={this.saveToState}
+                  className="email_input"
+                />
+                <Button
+                  {...button}
+                  onClick={this.handleSubmit}
+                  title="SEND MESSAGE"
+                />
+              </ContactFromWrapper>
+              <Text {...note} content="" />
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+    );
+  }
+}
 
 ContactSection.propTypes = {
   sectionWrapper: PropTypes.object,

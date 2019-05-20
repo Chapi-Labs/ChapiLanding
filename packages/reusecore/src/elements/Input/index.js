@@ -19,14 +19,14 @@ const Input = ({
   const [state, setState] = useState({
     toggle: false,
     focus: false,
-    value: ''
+    value: '',
   });
 
   // toggle function
   const handleToggle = () => {
     setState({
       ...state,
-      toggle: !state.toggle
+      toggle: !state.toggle,
     });
   };
 
@@ -34,7 +34,7 @@ const Input = ({
   const handleOnFocus = event => {
     setState({
       ...state,
-      focus: true
+      focus: true,
     });
     onFocus(event);
   };
@@ -43,7 +43,7 @@ const Input = ({
   const handleOnBlur = event => {
     setState({
       ...state,
-      focus: false
+      focus: false,
     });
     onBlur(event);
   };
@@ -52,9 +52,9 @@ const Input = ({
   const handleOnChange = event => {
     setState({
       ...state,
-      value: event.target.value
+      value: event.target.value,
     });
-    onChange(event.target.value);
+    onChange(event);
   };
 
   // get input focus class
@@ -105,8 +105,7 @@ const Input = ({
         <textarea
           {...props}
           id={htmlFor}
-          name={htmlFor}
-          value={state.value}
+          value={value}
           onChange={handleOnChange}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
@@ -147,7 +146,7 @@ const Input = ({
             id={htmlFor}
             name={htmlFor}
             type={inputType}
-            value={state.value}
+            value={value}
             onChange={handleOnChange}
             onBlur={handleOnBlur}
             onFocus={handleOnFocus}
@@ -177,9 +176,6 @@ Input.propTypes = {
   /** Set input label value. */
   label: PropTypes.string,
 
-  /** The input value, required for a controlled component. */
-  value: PropTypes.oneOf(['string', 'number']),
-
   /** Make default input into material style input. */
   isMaterial: PropTypes.bool,
 
@@ -192,7 +188,7 @@ Input.propTypes = {
     'email',
     'password',
     'number',
-    'textarea'
+    'textarea',
   ]),
 
   /** Add icon in input field. This prop will not work with password
@@ -219,7 +215,7 @@ Input.propTypes = {
    * @param {object} event The event source of the callback.
    * You can pull out the new value by accessing `event.target.value`.
    */
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 /** Inout default type. */
@@ -229,7 +225,7 @@ Input.defaultProps = {
   iconPosition: 'left',
   onBlur: () => {},
   onFocus: () => {},
-  onChange: () => {}
+  onChange: () => {},
 };
 
 export default Input;
