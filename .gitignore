@@ -4,3 +4,4 @@ node_modules/
 _next/
 .circleci/
 */**/node_modules/*
+node_modules

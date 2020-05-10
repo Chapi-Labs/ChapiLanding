@@ -19,7 +19,7 @@ const TeamSectionWrapper = styled.section`
 
 const SocialLinks = styled.div`
   margin-top: 12px;
-  > button {
+  > a {
     margin: 3px;
     cursor: pointer;
     width: 30px;
@@ -27,7 +27,7 @@ const SocialLinks = styled.div`
     line-height: 20px;
     background-color: transparent;
     border-radius: 3px;
-    border: 1px solid rgba(15, 33, 55, 0.26);
+    border: 0px solid rgba(15, 33, 55, 0.26);
     color: #0f2137;
     transition: all 0.2s ease;
     &:hover,

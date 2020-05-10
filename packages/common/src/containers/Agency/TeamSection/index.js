@@ -35,13 +35,6 @@ const TeamSection = ({
               <FeatureBlock
                 id={`member-${member.id}`}
                 className="team__member"
-                icon={
-                  <Image
-                    src={member.thumbnail_url}
-                    alt={`Team member photo ${member.id}`}
-                    className="member__photo"
-                  />
-                }
                 contentStyle={contentStyle}
                 title={<Heading content={member.name} {...memberName} />}
                 description={
@@ -49,9 +42,10 @@ const TeamSection = ({
                     <Text content={member.designation} {...designation} />
                     <SocialLinks>
                       {member.social_links.map((social, index) => (
-                        <button
+                        <a
                           key={`profile_id-${index}`}
-                          className={social}
+                          className={social.className}
+                          href={social.link}
                         />
                       ))}
                     </SocialLinks>

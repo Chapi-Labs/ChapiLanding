@@ -32,7 +32,7 @@ const Footer = ({
               title="Agency"
               logoStyle={logoStyle}
             />
-            <Text content="Chapi Labs Guatemala" {...textStyle} />
+            <Text content="Chapi Labs LLC" {...textStyle} />
             <Text content="info@chapilabs.com" {...textStyle} />
           </Box>
           {/* End of footer logo column */}
